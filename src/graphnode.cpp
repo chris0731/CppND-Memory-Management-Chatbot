@@ -10,8 +10,8 @@ GraphNode::~GraphNode()
 {
     //// STUDENT CODE
     ////
-
-    // delete _chatBot; 
+    
+    // delete _chatBot; // comment delete becuase instance is deleted in chatgui.cpp (Task 0)
 
     ////
     //// EOF STUDENT CODE
