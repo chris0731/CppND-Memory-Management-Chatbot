@@ -53,12 +53,13 @@ ChatBot::ChatBot(const ChatBot &other){
     _rootNode = other._rootNode;
     _chatLogic = other._chatLogic;
     _image = other._image;
+    _currentNode = other._currentNode;
 }
 
 //Copy Assingment
 ChatBot& ChatBot::operator=(const ChatBot &other){
 
-    std::cout << "ChatBot Copy Assignment" << std::endl;
+    std::cout << "ChatBot Copy Assignment Operator" << std::endl;
 
     if(this == &other){
         return *this;
@@ -67,6 +68,7 @@ ChatBot& ChatBot::operator=(const ChatBot &other){
     _rootNode = other._rootNode;
     _chatLogic = other._chatLogic;
     _image = other._image;
+    _currentNode = other._currentNode;
 
     return *this;
 }
@@ -79,18 +81,22 @@ ChatBot::ChatBot(ChatBot &&other){
     _rootNode = other._rootNode;
     _chatLogic = other._chatLogic;
     _image = other._image;
+    _currentNode = other._currentNode;
+
+    _chatLogic->SetChatbotHandle(this);
 
     other._rootNode = nullptr;
     other._chatLogic = nullptr;
-    delete other._image;
+    // delete other._image;
     other._image = NULL;
+    other._currentNode = nullptr;
 
 }
 
 //Move Assignment
 ChatBot& ChatBot::operator=(ChatBot &&other){
 
-    std::cout << "ChatBot Move Assignment" << std::endl;
+    std::cout << "ChatBot Move Assignment Operator" << std::endl;
 
     if(this == &other){
         return *this;
@@ -99,10 +105,14 @@ ChatBot& ChatBot::operator=(ChatBot &&other){
     _rootNode = other._rootNode;
     _chatLogic = other._chatLogic;
     _image = other._image;
+    _currentNode = other._currentNode;
+    
+    _chatLogic->SetChatbotHandle(this);
 
     other._rootNode = nullptr;
     other._chatLogic = nullptr;
-    delete other._image;
+    other._currentNode = nullptr;
+    // delete other._image;
     other._image = NULL;
 
     return *this;
