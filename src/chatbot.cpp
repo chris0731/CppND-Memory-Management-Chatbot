@@ -52,8 +52,9 @@ ChatBot::ChatBot(const ChatBot &other){
 
     _rootNode = other._rootNode;
     _chatLogic = other._chatLogic;
-    _image = other._image;
+    _image = new wxBitmap(*other._image);
     _currentNode = other._currentNode;
+    _chatLogic->SetChatbotHandle(this);
 }
 
 //Copy Assingment
@@ -67,8 +68,9 @@ ChatBot& ChatBot::operator=(const ChatBot &other){
 
     _rootNode = other._rootNode;
     _chatLogic = other._chatLogic;
-    _image = other._image;
+    _image = new wxBitmap(*other._image);
     _currentNode = other._currentNode;
+    _chatLogic->SetChatbotHandle(this);
 
     return *this;
 }
